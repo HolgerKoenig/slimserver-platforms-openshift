@@ -1,12 +1,12 @@
 FROM truecharts/logitechmediaserver:latest
 
 # Install packages
-RUN apt-get update -qq  && \
-	apt-get clean -qy && \
-	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#RUN apt-get update -qq  && \
+#	apt-get clean -qy && \
+#	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 #Base image
-FROM debian:bullseye-slim
+#FROM debian:bullseye-slim
 
 # Install packages
 RUN apt-get update -qq  && \
