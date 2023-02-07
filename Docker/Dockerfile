@@ -29,8 +29,8 @@ RUN chmod +x /usr/bin/start-container
 # Volume and port setup
 #RUN mkdir -p /config /music /playlist /lms && \
 #	chown -R squeezeboxserver:nogroup /config /playlist
-RUN mkdir -p /config /config/logs /music /playlist /lms
-RUN chgrp -R 0 /config /config/logs /music /playlist /lms && chmod -R g=u /config /config/logs /music /playlist /lms
+RUN mkdir -p /config /config/logs /config/prefs /config/cache /music /playlist /lms
+RUN chgrp -R 0 /config /config/logs /config/prefs /config/cache /music /playlist /lms && chmod -R g=u /config /config/logs /config/prefs /config/cache /music /playlist /lms
 
 COPY . /lms
 COPY Slim-Utils-OS-Custom.pm /lms/Slim/Utils/OS/Custom.pm
