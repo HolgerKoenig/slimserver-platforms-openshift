@@ -33,9 +33,9 @@ COPY start-container.sh /usr/bin/start-container
 RUN chmod +x /usr/bin/start-container
 
 # Volume and port setup
-RUN mkdir -p /config /music /playlist /lms && \
-	chown -R squeezeboxserver:nogroup /config /playlist
-#RUN mkdir -p /config /config/logs /config/prefs /config/cache /music /playlist /lms
+#RUN mkdir -p /config /music /playlist /lms && \
+#	chown -R squeezeboxserver:nogroup /config /playlist
+RUN mkdir -p /config /music /playlist /lms
 #RUN chgrp -R 0 /config /config/logs /config/prefs /config/cache /music /playlist /lms && chmod -R g=u /config /config/logs /config/prefs /config/cache /music /playlist /lms
 RUN chgrp -R 0 /config /music /playlist /lms && chmod -R g=u /config /music /playlist /lms
 
