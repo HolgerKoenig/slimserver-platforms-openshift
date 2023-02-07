@@ -10,6 +10,7 @@ umask 0002
 
 #Add permissions
 #chown -R squeezeboxserver:nogroup /config /playlist /lms
+chgrp -R 0 /config /playlist /lms && chmod -R g=u /config /playlist /lms
 
 if [[ -f /config/custom-init.sh ]]; then
 	echo "Running custom initialization script..."
