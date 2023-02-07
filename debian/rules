@@ -1,0 +1,39 @@
+#!/usr/bin/make -f
+
+# $Id$
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+export DH_INTERNAL_BUILDFLAGS=1
+
+package=logitechmediaserver
+base=$(CURDIR)/debian/$(package)
+source=$(CURDIR)/../server
+
+# main packaging script based on dh7 syntax
+%:
+	dh $@ --with=systemd
+
+# Be nice to older systems (Debian version <= 7) by removing an 'init-system-helpers'
+# package dependency if it has been generated. These systems cannot satisfy the
+# dependency, and the LMS package cannot be easily installed if it is left in place.
+# (debhelper <= 11 may add the dependency.)
+# LMS will install successfully with or without this package.
+override_dh_gencontrol:
+	dh_gencontrol
+	sed -i '/^Depends/s/init-system-helpers[^,]*,\s*//' ${base}/DEBIAN/control
+
+# Overrides for variances within Logitech Media Server file locations
+override_dh_perl:
+	# using hard-coded dependency in control file
+
+override_dh_installdocs:
+	cp ${source}/License.txt $(CURDIR)/debian/copyright
+	dh_installdocs
+
+override_dh_install:
+	dh_install -X darwin -X freebsd -X MSWin -X sparc-linux -X PreventStandby -X errmsg
+	# Copy our server files to the appropriate Debian locations.
+	install -m0755 ${source}/slimserver.pl ${base}/usr/sbin/squeezeboxserver
+	install -m0755 ${source}/scanner.pl ${base}/usr/sbin/squeezeboxserver-scanner
+	install -m0755 ${source}/cleanup.pl ${base}/usr/sbin/squeezeboxserver-cleanup
