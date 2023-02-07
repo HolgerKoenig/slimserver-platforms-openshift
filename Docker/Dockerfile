@@ -1,4 +1,5 @@
-FROM truecharts/logitechmediaserver:latest
+FROM lmscommunity/logitechmediaserver:latest
+#FROM truecharts/logitechmediaserver:latest
 
 # Install packages
 #RUN apt-get update -qq  && \
