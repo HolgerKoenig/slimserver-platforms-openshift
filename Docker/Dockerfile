@@ -1,7 +1,7 @@
 #Base image
-FROM truecharts/logitechmediaserver:latest
-
 FROM debian:bullseye-slim
+
+ADD truecharts/logitechmediaserver:latest
 
 # Set environment variables
 ENV DEBIAN_FRONTEND noninteractive
