@@ -3,7 +3,7 @@ FROM debian:bullseye-slim
 
 FROM truecharts/logitechmediaserver:latest
 
-ALL lmscommunity/logitechmediaserver:latest
+#ALL lmscommunity/logitechmediaserver:latest
 
 # Set environment variables
 ENV DEBIAN_FRONTEND noninteractive
