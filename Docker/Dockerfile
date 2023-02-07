@@ -14,19 +14,20 @@ RUN apt-get update -qq  && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add & configure user
-RUN useradd squeezeboxserver && \
-	usermod -u $PUID squeezeboxserver && \
-	usermod -g $PGID squeezeboxserver && \
-	usermod -d /home squeezeboxserver && \
-	usermod -a -G audio squeezeboxserver
+#RUN useradd squeezeboxserver && \
+#	usermod -u $PUID squeezeboxserver && \
+#	usermod -g $PGID squeezeboxserver && \
+#	usermod -d /home squeezeboxserver && \
+#	usermod -a -G audio squeezeboxserver
 
 # Add startup script
-COPY start-container.sh /usr/bin/start-container
-RUN chmod +x /usr/bin/start-container
+#COPY start-container.sh /usr/bin/start-container
+#RUN chmod +x /usr/bin/start-container
 
 # Volume and port setup
-RUN mkdir -p /config /music /playlist /lms && \
-	chown -R squeezeboxserver:nogroup /config /playlist
+#RUN mkdir -p /config /music /playlist /lms && \
+#	chown -R squeezeboxserver:nogroup /config /playlist
+RUN mkdir -p /config /music /playlist /lms
 
 COPY . /lms
 COPY Slim-Utils-OS-Custom.pm /lms/Slim/Utils/OS/Custom.pm
@@ -38,4 +39,5 @@ EXPOSE 3483 3483/udp ${HTTP_PORT} 9090
 #Startup setup
 WORKDIR /config
 
+#ENTRYPOINT ["start-container"]
 ENTRYPOINT ["start-container"]
