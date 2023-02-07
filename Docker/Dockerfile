@@ -3,8 +3,6 @@ FROM debian:bullseye-slim
 
 FROM truecharts/logitechmediaserver:latest
 
-#ALL lmscommunity/logitechmediaserver:latest
-
 # Set environment variables
 ENV DEBIAN_FRONTEND noninteractive
 ENV LC_ALL="C.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8"
@@ -32,7 +30,7 @@ RUN chmod +x /usr/bin/start-container
 #RUN mkdir -p /config /music /playlist /lms && \
 #	chown -R squeezeboxserver:nogroup /config /playlist
 RUN mkdir -p /config /config/logs /music /playlist /lms
-RUN chgrp -R 0 /config /config/logs /music /playlist /lms && chmod -R g=u /config /music /playlist /lms
+RUN chgrp -R 0 /config /config/logs /music /playlist /lms && chmod -R g=u /config /config/logs /music /playlist /lms
 
 COPY . /lms
 COPY Slim-Utils-OS-Custom.pm /lms/Slim/Utils/OS/Custom.pm
