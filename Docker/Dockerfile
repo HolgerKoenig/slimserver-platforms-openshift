@@ -1,6 +1,10 @@
 #Base image
 FROM debian:bullseye-slim
 
+FROM truecharts/logitechmediaserver:latest
+
+ALL lmscommunity/logitechmediaserver:latest
+
 # Set environment variables
 ENV DEBIAN_FRONTEND noninteractive
 ENV LC_ALL="C.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8"
