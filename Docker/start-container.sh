@@ -2,14 +2,14 @@
 
 #Set user and group
 umask 0002
-PUID=${PUID:-`id -u squeezeboxserver`}
-PGID=${PGID:-`id -g squeezeboxserver`}
+#PUID=${PUID:-`id -u squeezeboxserver`}
+#PGID=${PGID:-`id -g squeezeboxserver`}
 
-usermod -o -u "$PUID" squeezeboxserver
-groupmod -o -g "$PGID" nogroup
+#usermod -o -u "$PUID" squeezeboxserver
+#groupmod -o -g "$PGID" nogroup
 
 #Add permissions
-chown -R squeezeboxserver:nogroup /config /playlist /lms
+#chown -R squeezeboxserver:nogroup /config /playlist /lms
 
 if [[ -f /config/custom-init.sh ]]; then
 	echo "Running custom initialization script..."
